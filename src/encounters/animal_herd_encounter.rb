@@ -4,15 +4,15 @@ class AnimalHerdEncounter < Encounter
   
     def table
       table = []
-      8.times { table << "4d4 wolves" }
-      10.times { table << "3d4 boars" }
-      5.times { table << "3d4 axe beaks" }
-      22.times { table << "5d4 deer" }
-      14.times { table << "4d4 wild horses" }
-      20.times { table << "5d4 elk" }
-      10.times { table << "5d3 hyena" }
-      10.times { table << "5d3 jackal" }
-      1.times { table << "4d3 elephants" }
+      8.times { table << "#{ 4 * DiceRoller.roll_dice(4)} волков" }
+      10.times { table << "#{ 3 * DiceRoller.roll_dice(4)} кабанов" }
+      5.times { table << "#{ 3 * DiceRoller.roll_dice(4)} ястребов" }
+      22.times { table << "#{ 5 * DiceRoller.roll_dice(4)} оленей" }
+      14.times { table << "#{ 4 * DiceRoller.roll_dice(4)} диких лошадей" }
+      20.times { table << "#{ 5 * DiceRoller.roll_dice(4)} лосей" }
+      10.times { table << "#{ 5 * DiceRoller.roll_dice(4)} гиен" }
+      10.times { table << "#{ 5 * DiceRoller.roll_dice(3)} шакалов" }
+      1.times { table << "#{ 4 * DiceRoller.roll_dice(3)} слонов" }
       table
     end
   end
