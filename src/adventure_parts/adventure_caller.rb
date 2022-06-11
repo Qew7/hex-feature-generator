@@ -2,7 +2,7 @@ class AdventureCaller < AdventurePart
   require_relative 'adventure_adjective'
 
   def self.call(local: 'местный', enemy: 'враг')
-    DiceRoller.roll_from_table(table).gsub('местный', local).gsub('враг', enemy)
+    DiceRoller.roll_from_table(table).gsub('местный', local).gsub('враг', enemy).strip
   end
   
   private
