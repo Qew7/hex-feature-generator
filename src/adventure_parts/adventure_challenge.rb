@@ -1,7 +1,7 @@
 class AdventureChallenge < AdventurePart
-  def self.call
+  def self.call(faction: '')
     if [:who, :what].sample == :who
-      "#{DiceRoller.roll_from_table(verb_with_who_table)} #{adjective} #{who}"
+      "#{DiceRoller.roll_from_table(verb_with_who_table)} #{adjective} #{who} #{faction}".strip
     else
       "#{DiceRoller.roll_from_table(verb_with_what_table)} #{adjective} #{what}"
     end

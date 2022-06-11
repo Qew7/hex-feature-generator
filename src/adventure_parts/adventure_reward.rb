@@ -1,4 +1,4 @@
-class AdventureEnticement < AdventurePart
+class AdventureReward < AdventurePart
   
   private
   
