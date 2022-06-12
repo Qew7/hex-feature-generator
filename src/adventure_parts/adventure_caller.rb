@@ -9,7 +9,7 @@ class AdventureCaller < AdventurePart
   end
 
   def roll
-    DiceRoller.roll_from_table(table).gsub('местный', local.white).gsub('враг', enemy.light_red).strip
+    DiceRoller.roll_from_table(table).gsub('местный', local).gsub('враг', enemy).strip
   end
   
   private

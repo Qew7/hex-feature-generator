@@ -1,7 +1,7 @@
 class AdventureGenerator
   require_relative 'src/libraries'
 
-  def self.generate(faction: FactionName.generate, enemy: FactionName.generate)
+  def self.generate(faction: FactionName.generate.white, enemy: FactionName.generate.light_red)
     {
       faction: faction,
       enemy: enemy,
@@ -10,8 +10,8 @@ class AdventureGenerator
       timer: AdventureTimer.roll,
       clue: clue,
       advantage: AdventureAdvantage.roll,
-      reward: AdventureReward.roll,
-      challenge: AdventureChallenge.roll(faction: enemy),
+      reward: AdventureReward.roll.light_cyan,
+      challenge: AdventureChallenge.roll(faction: [faction, enemy].sample),
       caller: AdventureCaller.roll(local: faction, enemy: enemy)
     }
   end

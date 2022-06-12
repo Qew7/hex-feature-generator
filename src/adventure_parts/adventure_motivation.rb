@@ -5,21 +5,21 @@ class AdventureMotivation < AdventurePart
   
   def table
     table = []
-    1.times { table << "Оскорблены насмешками" }
+    1.times { table << "Были скорблены насмешками" }
     1.times { table << "Хотят получить #{AdventureItem.roll}" }
-    1.times { table << "Приказ лидера" }
-    1.times { table << "Приказ духовного лидера" }
-    1.times { table << "Затаившаяся древняя обида" }
-    1.times { table << "Попытка освободиться" }
-    1.times { table << "Попытка приструнить" }
-    1.times { table << "Голод" }
-    1.times { table << "Захват территории" }
-    1.times { table << "Геноцид" }
+    1.times { table << "Получили приказ лидера" }
+    1.times { table << "Получили приказ духовного лидера" }
+    1.times { table << "Ответили на затаившуюся древнюю обиду" }
+    1.times { table << "Пытались освободиться" }
+    1.times { table << "Пытались приструнить" }
+    1.times { table << "Голодали" }
+    1.times { table << "Пытались захватить территории" }
+    1.times { table << "Хотели устроить геноцид" }
     1.times { table << "Ради веселья" }
-    1.times { table << "Алкоголь" }
-    1.times { table << "Наркотические грибы" }
-    1.times { table << "Подкуп извне" }
-    1.times { table << "Такова их природа" }
+    1.times { table << "Были пьяны" }
+    1.times { table << "Находились под действиями наркотиков" }
+    1.times { table << "Были подкуплены извне" }
+    1.times { table << "Следовали своей природе" }
     table
   end
 end

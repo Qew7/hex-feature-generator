@@ -21,7 +21,7 @@ class AdventureBackstory < AdventurePart
   end
 
   def what_and_why
-    "#{DiceRoller.roll_from_table(what_table).gsub('Местные', locals)} #{DiceRoller.roll_from_table(why_table).gsub('враги', enemies)}"
+    "#{DiceRoller.roll_from_table(what_table).gsub('Местные', locals)} #{DiceRoller.roll_from_table(why_table).gsub('враги', enemies).gsub('Местные', locals)}"
   end
 
   def what_table
