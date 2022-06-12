@@ -8,7 +8,7 @@ class AdventureGenerator
       backstory: AdventureBackstory.roll(locals: faction, enemies: enemy),
       enemy_motivation: AdventureMotivation.roll,
       timer: AdventureTimer.roll,
-      clue: clue,
+      clue: clue.light_black,
       advantage: AdventureAdvantage.roll,
       reward: AdventureReward.roll.light_cyan,
       challenge: AdventureChallenge.roll(faction: [faction, enemy].sample),

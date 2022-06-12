@@ -26,9 +26,9 @@ class CalendarDayTracker
       when 3..5
         'Весна'.green
       when 6..8
-        'Лето'.yellow
+        'Лето'.light_yellow
       when 9..11
-        'Осень'.orange
+        'Осень'.yellow
     end
   end
 

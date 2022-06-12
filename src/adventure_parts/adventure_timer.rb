@@ -1,6 +1,12 @@
 class AdventureTimer < AdventurePart
-  def self.call
-    "#{DiceRoller.roll_from_table(self.table)} через #{DiceRoller.roll_dice(20) + DiceRoller.roll_dice(20)} дней"
+  require 'colorize'
+
+  def roll
+    [
+      "#{DiceRoller.roll_from_table(table)}".light_blue,
+      "через",
+      "#{DiceRoller.roll_dice(20) + DiceRoller.roll_dice(20)} дней".light_magenta,
+    ].join(' ')
   end
   
   private
@@ -24,7 +30,7 @@ class AdventureTimer < AdventurePart
     1.times { table << "Выкуп за пленника будет повышен" }
     1.times { table << "Награда установлена за выполнение задания" }
     1.times { table << "Награда уменьшится" }
-    1.times { table << "#{['Снегопа', 'Песчанная буря', 'Лавина'].sample} перекроет доступ к локации" }
+    1.times { table << "#{['Снегопад', 'Песчанная буря', 'Лавина'].sample} перекроет доступ к локации" }
     1.times { table << "Определенное ценное сокровище будетуничтожено" }
     1.times { table << "Способность проникнуть или выйти из локации станет сложнее" }
     1.times { table << "Информатора раскроют" }
@@ -32,6 +38,9 @@ class AdventureTimer < AdventurePart
     1.times { table << "Ресурс необходимый для выживания кончится" }
     1.times { table << "Состояние покровителя группы ухудшится" }
     1.times { table << "Сокровище потеряет ценность" }
+    1.times { table << "Оно вновь пробудится" }
+    1.times { table << "Начнется вторжение" }
+    1.times { table << "Состоится свадьба" }
     table
   end
 end
