@@ -15,7 +15,7 @@ class AdventureMotivation < AdventurePart
     1.times { table << "Голодали" }
     1.times { table << "Пытались захватить территории" }
     1.times { table << "Хотели устроить геноцид" }
-    1.times { table << "Ради веселья" }
+    1.times { table << "Веселились" }
     1.times { table << "Были пьяны" }
     1.times { table << "Находились под действиями наркотиков" }
     1.times { table << "Были подкуплены извне" }

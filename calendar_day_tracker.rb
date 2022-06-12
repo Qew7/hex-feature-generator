@@ -22,13 +22,13 @@ class CalendarDayTracker
   def self.calculate_season(date)    
     case date.month
       when 12, 1, 2
-        'Зима'
+        'Зима'.white
       when 3..5
-        'Весна'
+        'Весна'.green
       when 6..8
-        'Лето'
+        'Лето'.yellow
       when 9..11
-        'Осень'
+        'Осень'.orange
     end
   end
 
