@@ -1,7 +1,7 @@
 class AdventureGenerator
   require_relative 'src/libraries'
 
-  def self.generate(faction: FactionName.call, enemy: FactionName.call)
+  def self.generate(faction: FactionName.generate, enemy: FactionName.generate)
     {
       faction: faction,
       enemy: enemy,

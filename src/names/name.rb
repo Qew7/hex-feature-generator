@@ -1,5 +1,5 @@
 class Name
-  def self.call
-    self.new.generate
+  def self.generate(args={})
+    self.new(**args).generate
   end
 end
