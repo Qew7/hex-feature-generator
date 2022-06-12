@@ -6,10 +6,10 @@ class CurrentEventEncounter < Encounter
   def table
     table = []
     1.times { table << "Fire covering 1d6 (50% yards or 50% miles) $" }
-    7.times { table << "#{AnimalHerdEncounter.call} напали на женщину и ребенка" }
+    7.times { table << "#{AnimalHerdEncounter.roll} напали на женщину и ребенка" }
     10.times { table << "Грабители напали на #{ DiceRoller.roll_dice(2)} путешественника" }
     10.times { table << "Монстр напал на #{ DiceRoller.roll_dice(2)} путешественника" }
-    10.times { table << "#{AnimalHerdEncounter.call} доедают метрвое тело" }
+    10.times { table << "#{AnimalHerdEncounter.roll} доедают метрвое тело" }
     35.times { table << "Minor Event:" }
     5.times { table << "Мимо пролетает монстр с трупом в теле" }
     5.times { table << "Дуэль двух волшебников" }
