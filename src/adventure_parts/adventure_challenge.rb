@@ -1,5 +1,11 @@
 class AdventureChallenge < AdventurePart
-  def self.call(faction: '')
+  attr_reader :faction
+
+  def initialize(faction: nil)
+    @faction = faction
+  end
+
+  def roll
     if [:who, :what].sample == :who
       [
         DiceRoller.roll_from_table(verb_with_who_table),
@@ -18,19 +24,19 @@ class AdventureChallenge < AdventurePart
   
   private
 
-  def self.adjective
-    AdventureAdjective.call
+  def adjective
+    AdventureAdjective.roll
   end
 
-  def self.who
-    AdventurePerson.call
+  def who
+    AdventurePerson.roll
   end
 
-  def self.what
-    AdventureItem.call
+  def what
+    AdventureItem.roll
   end
 
-  def self.verb_with_who_table
+  def verb_with_who_table
     table = []
     5.times { table << "Крепко присоеденить" }
     5.times { table << "Освободить" }
@@ -53,7 +59,7 @@ class AdventureChallenge < AdventurePart
     table
   end
 
-  def self.verb_with_what_table
+  def verb_with_what_table
     table = []
     5.times { table << "Крепко присоеденить" }
     5.times { table << "Балансировать на" }

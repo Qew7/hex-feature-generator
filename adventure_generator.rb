@@ -5,14 +5,14 @@ class AdventureGenerator
     {
       faction: faction,
       enemy: enemy,
-      backstory: AdventureBackstory.call(locals: faction, enemies: enemy),
-      enemy_motivation: AdventureMotivation.call,
-      timer: AdventureTimer.call,
+      backstory: AdventureBackstory.roll(locals: faction, enemies: enemy),
+      enemy_motivation: AdventureMotivation.roll,
+      timer: AdventureTimer.roll,
       clue: clue,
-      advantage: AdventureAdvantage.call,
-      reward: AdventureReward.call,
-      challenge: AdventureChallenge.call(faction: enemy),
-      caller: AdventureCaller.call(local: faction, enemy: enemy)
+      advantage: AdventureAdvantage.roll,
+      reward: AdventureReward.roll,
+      challenge: AdventureChallenge.roll(faction: enemy),
+      caller: AdventureCaller.roll(local: faction, enemy: enemy)
     }
   end
 
@@ -20,8 +20,8 @@ class AdventureGenerator
 
   def self.clue
     [
-      AdventureAdjective.call,
-      AdventureClue.call,
+      AdventureAdjective.roll,
+      AdventureClue.roll,
     ].join(' ')
   end
 end

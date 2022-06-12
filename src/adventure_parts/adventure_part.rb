@@ -1,11 +1,11 @@
 class AdventurePart
   require_relative "../dice_roller"
 
-  def self.call
-    self.new.get_proc
+  def self.roll(args={})
+    self.new(**args).roll
   end
 
-  def get_proc
-    DiceRoller.roll_from_table(table)
+  def roll
+    DiceRoller.roll_from_table(self.table)
   end
 end

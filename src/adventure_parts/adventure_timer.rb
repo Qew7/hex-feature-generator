@@ -5,7 +5,7 @@ class AdventureTimer < AdventurePart
   
   private
   
-  def self.table
+  def table
     table = []
     1.times { table << "Предмет партии или защитное заклинание теряет силу" }
     1.times { table << "Злобный план придет в исполнение" }

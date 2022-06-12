@@ -6,7 +6,7 @@ class AdventureMotivation < AdventurePart
   def table
     table = []
     1.times { table << "Оскорблены насмешками" }
-    1.times { table << "Хотят получить #{AdventureItem.call}" }
+    1.times { table << "Хотят получить #{AdventureItem.roll}" }
     1.times { table << "Приказ лидера" }
     1.times { table << "Приказ духовного лидера" }
     1.times { table << "Затаившаяся древняя обида" }

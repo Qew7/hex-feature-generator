@@ -1,11 +1,18 @@
 class AdventureBackstory < AdventurePart
-  def self.call(locals: 'Местные', enemies: 'враги')
-    "#{when_happened} #{what_and_why(locals, enemies)}"
+  attr_reader :locals, :enemies
+
+  def initialize(locals: 'Местные', enemies: 'враги')
+    @locals = locals
+    @enemies = enemies
+  end
+
+  def roll
+    "#{when_happened} #{what_and_why}"
   end
   
   private
   
-  def self.when_happened
+  def when_happened
     [
       rand(1..100),
       %w[часов дней месяцев лет].sample,
@@ -13,11 +20,11 @@ class AdventureBackstory < AdventurePart
     ].join(' ')
   end
 
-  def self.what_and_why(locals, enemies)
+  def what_and_why
     "#{DiceRoller.roll_from_table(what_table).gsub('Местные', locals)} #{DiceRoller.roll_from_table(why_table).gsub('враги', enemies)}"
   end
 
-  def self.what_table
+  def what_table
     table = []
     1.times { table << "Местные были изменены" }
     1.times { table << "Местные победили" }
@@ -37,7 +44,7 @@ class AdventureBackstory < AdventurePart
     table
   end
 
-  def self.why_table
+  def why_table
     table = []
     1.times { table << "в связи с древним проклятием наложеным враги" }
     1.times { table << "из-за дикого населения враги" }
