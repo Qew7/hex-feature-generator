@@ -3,6 +3,7 @@ require_relative 'weather_generator'
 require_relative 'adventure_generator'
 require_relative 'calendar_day_tracker'
 require 'io/console'
+require 'colorize'
 require 'date'
 
 input = ''
@@ -68,9 +69,9 @@ def adventure_text
   <<-HEREDOC
   #{adventure_hash[:caller]}: #{adventure_hash[:backstory]}
 
-  потому что #{adventure_hash[:enemy]} хотел #{adventure_hash[:enemy_motivation]}
+  потому что #{adventure_hash[:enemy].light_red} хотел #{adventure_hash[:enemy_motivation].red}
 
-  нужно #{adventure_hash[:challenge]}
+  нужно #{adventure_hash[:challenge].cyan}
 
   до того как #{adventure_hash[:timer]}
 
@@ -78,7 +79,7 @@ def adventure_text
 
   подсказкой может стать #{adventure_hash[:clue]}
 
-  за это можно получить #{adventure_hash[:reward]}
+  за это можно получить #{adventure_hash[:reward].light_cyan}
   HEREDOC
 end
 
