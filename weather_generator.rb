@@ -19,21 +19,22 @@ class WeatherGenerator
 
   def self.base_weather_table
     table = []
-    10.times { table << "сухая" }
-    10.times { table << "влажная" }
-    10.times { table << "жаркая" }
-    10.times { table << "холодная" }
-    10.times { table << "прохладная" }
-    10.times { table << "теплая" }
-    5.times { table << "моросящая" }
-    5.times { table << "ветренная" }
-    5.times { table << "пыльная" }
-    5.times { table << "дождливая" }
-    3.times { table << "очень жаркая" }
-    3.times { table << "очень холодная" }
-    1.times { table << "ураган" }
-    1.times { table << "гроза" }
-    1.times { table << "буря" }
+    10.times { table << "сухая 🌞" }
+    10.times { table << "влажная 💧" }
+    10.times { table << "жаркая 🌡" }
+    10.times { table << "холодная ⛄" }
+    10.times { table << "прохладная 🌬" }
+    10.times { table << "теплая 🌅" }
+    5.times { table << "моросящая 🌦" }
+    5.times { table << "ветренная 🌬" }
+    5.times { table << "пыльная 🌫" }
+    5.times { table << "дождливая 🌧" }
+    3.times { table << "очень жаркая 🔥" }
+    3.times { table << "очень холодная ❄" }
+    1.times { table << "ураган 🌪" }
+    1.times { table << "гроза 🌩" }
+    1.times { table << "буря ⛈" }
+    1.times { table << "туманная 🌫" }
     table
   end
 
