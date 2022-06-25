@@ -4,12 +4,9 @@ require_relative 'adventure_generator'
 require_relative 'calendar_day_tracker'
 require 'io/console'
 require 'date'
+require 'cli/ui'
 
 input = ''
-
-def next_time_of_day
-  @arg_time_of_day || 'День'
-end
 
 def next_date
   Date.today
@@ -17,7 +14,7 @@ end
 
 @options = {
   explored: false,
-  next_time_of_day: next_time_of_day,
+  next_time_of_day: 'День',
   next_date: next_date,
 }
 
@@ -35,23 +32,22 @@ def parse_input
   input
 end
 
-def output
-  output_string = <<-HEREDOC
-#{ '-' * 29 + 'КАЛЕНДАРЬ' + '-' * 28 }
+def calendar_info
+  <<-HEREDOC
+    #{ CalendarDayTracker.call(next_time_of_day: @options[:next_time_of_day], next_date: @options[:next_date]) }
+  HEREDOC
+end
 
-#{ CalendarDayTracker.call(next_time_of_day: @options[:next_time_of_day], next_date: @options[:next_date]) }
-#{ '-' * 30 + 'ПОГОДА' + '-' * 30 }
+def weather_info
+  <<-HEREDOC
+    #{ WeatherGenerator.generate }
+  HEREDOC
+end
 
-#{ WeatherGenerator.generate }
-#{ '-' * 30 + 'СОБЫТИЕ' + '-' * 29 }
-
-#{ @options[:explored] ? 'Иследованый гекс' : 'Не иследованый гекс' }
-#{ HexEncounterGenerator.generate(explored: @options[:explored]) }
-
-#{ '-' * 24 + 'БЫСТРОЕ ПРИКЛЮЧЕНИЕ' + '-' * 23 }
-
-#{ adventure_text }
-#{ '-' * 66 }
+def encounter_info
+  <<-HEREDOC
+    #{ @options[:explored] ? 'Иследованый гекс' : 'Не иследованый гекс' }
+    #{ HexEncounterGenerator.generate(explored: @options[:explored]) }
   HEREDOC
 end
 
@@ -63,7 +59,7 @@ def options_output
   HEREDOC
 end
 
-def adventure_text
+def adventure_info
   adventure_hash = AdventureGenerator.generate
   <<-HEREDOC
   #{adventure_hash[:caller]}: #{adventure_hash[:backstory]}
@@ -82,18 +78,12 @@ def adventure_text
   HEREDOC
 end
 
+CLI::UI::StdoutRouter.enable
 while true do
   clear_screen
-  if input == 'g' || @output_string.nil?
-    @output_string = output
-  end
-  puts @output_string
-  puts '-' * 19 + 'НАСТРОЙКИ СЛЕДУЮЩЕЙ ГЕНЕРАЦИИ' + '-' * 18
-  puts options_output
-  puts '-' * 28 + 'УПРАВЛЕНИЕ' + '-' * 28
-  puts "q - Выход | g - Сгенерировать"
-  puts "e - Иследованый\\Не иследованый гекс"
-  puts "n - Следующее время дня"
-  puts "d - Следующий день | p - Предыдущий день"
+  CLI::UI::Frame.open('КАЛЕНДАРЬ') { puts calendar_info }
+  CLI::UI::Frame.open('ПОГОДА') { puts weather_info }
+  CLI::UI::Frame.open('ЭНКАУНТЕР') { puts encounter_info }
+  CLI::UI::Frame.open('БЫСТРОЕ ПРИКЛЮЧЕНИЕ') { puts adventure_info }
   input = parse_input
 end
