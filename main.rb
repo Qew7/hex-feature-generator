@@ -1,6 +1,7 @@
 require_relative 'hex_encounter_generator'
 require_relative 'weather_generator'
 require_relative 'adventure_generator'
+require_relative 'dream_generator'
 require_relative 'calendar_day_tracker'
 require 'io/console'
 require 'date'
@@ -78,6 +79,12 @@ def adventure_info
   HEREDOC
 end
 
+def dream_info
+  <<-HEREDOC
+    #{ DreamGenerator.generate }
+  HEREDOC
+end
+
 CLI::UI::StdoutRouter.enable
 while true do
   clear_screen
@@ -85,5 +92,6 @@ while true do
   CLI::UI::Frame.open('ПОГОДА') { puts weather_info }
   CLI::UI::Frame.open('ЭНКАУНТЕР') { puts encounter_info }
   CLI::UI::Frame.open('БЫСТРОЕ ПРИКЛЮЧЕНИЕ') { puts adventure_info }
+  CLI::UI::Frame.open('СОН') { puts dream_info }
   input = parse_input
 end
