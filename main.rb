@@ -63,9 +63,9 @@ end
 def adventure_info
   adventure_hash = AdventureGenerator.generate
   <<-HEREDOC
-  #{adventure_hash[:caller]}: #{adventure_hash[:backstory]}
+  #{adventure_hash[:caller].blue}: #{adventure_hash[:backstory]}
 
-  потому что #{adventure_hash[:enemy]} #{adventure_hash[:enemy_motivation]}
+  потому что #{adventure_hash[:enemy][:name].red} #{adventure_hash[:enemy_motivation]}
 
   нужно #{adventure_hash[:challenge]}
 
@@ -75,7 +75,7 @@ def adventure_info
 
   подсказкой может стать #{adventure_hash[:clue]}
 
-  за это можно получить #{adventure_hash[:reward]}
+  за это можно получить #{adventure_hash[:reward].light_cyan}
   HEREDOC
 end
 

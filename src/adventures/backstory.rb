@@ -1,4 +1,4 @@
-class AdventureBackstory < AdventurePart
+class Adventures::Backstory < AdventurePart
   attr_reader :locals, :enemies
 
   def initialize(locals: 'Местные', enemies: 'враги')

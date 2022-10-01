@@ -1,4 +1,4 @@
-class NpcEncounter < Encounter
+class Encounters::Npc < Encounter
 
   private
 

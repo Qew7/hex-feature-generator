@@ -1,4 +1,4 @@
-class WanderingMonsterEncounter < Encounter
+class Encounters::WanderingMonster < Encounter
   
   private
   

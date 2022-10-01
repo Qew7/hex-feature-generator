@@ -1,4 +1,4 @@
-class AnimalHerdEncounter < Encounter
+class Encounters::AnimalHerd < Encounter
   
     private
   

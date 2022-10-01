@@ -1,4 +1,4 @@
-class AdventureTimer < AdventurePart
+class Adventures::Timer < AdventurePart
   require 'colorize'
 
   def roll

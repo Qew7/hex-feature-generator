@@ -1,18 +1,19 @@
 class AdventureGenerator
   require_relative 'src/libraries'
+  require_relative 'faction_generator'
 
-  def self.generate(faction: FactionName.generate.white, enemy: FactionName.generate.light_red)
+  def self.generate(faction: FactionGenerator.generate, enemy: FactionGenerator.generate)
     {
       faction: faction,
       enemy: enemy,
-      backstory: AdventureBackstory.roll(locals: faction, enemies: enemy),
-      enemy_motivation: AdventureMotivation.roll,
-      timer: AdventureTimer.roll,
-      clue: clue.light_black,
-      advantage: AdventureAdvantage.roll,
-      reward: AdventureReward.roll.light_cyan,
-      challenge: AdventureChallenge.roll(faction: [faction, enemy].sample),
-      caller: AdventureCaller.roll(local: faction, enemy: enemy)
+      backstory: Adventures::Backstory.roll(locals: faction[:name], enemies: enemy[:name]),
+      enemy_motivation: Adventures::Motivation.roll,
+      timer: Adventures::Timer.roll,
+      clue: clue,
+      advantage: Adventures::Advantage.roll,
+      reward: Adventures::Reward.roll,
+      challenge: Adventures::Challenge.roll(faction: [faction[:name], enemy[:name]].sample),
+      caller: Adventures::Caller.roll(local: faction[:name], enemy: enemy[:name])
     }
   end
 
@@ -20,8 +21,8 @@ class AdventureGenerator
 
   def self.clue
     [
-      AdventureAdjective.roll,
-      AdventureClue.roll,
+      Adventures::Adjective.roll,
+      Adventures::Clue.roll,
     ].join(' ')
   end
 end

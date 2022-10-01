@@ -1,4 +1,4 @@
-class RemoteStructureEncounter < Encounter
+class Encounters::RemoteStructure < Encounter
   
   private
   

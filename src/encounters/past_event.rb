@@ -1,4 +1,4 @@
-class PastEventEncounter < Encounter
+class Encounters::PastEvent < Encounter
   
   private
   

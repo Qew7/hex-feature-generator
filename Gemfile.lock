@@ -11,6 +11,7 @@ GEM
     unicode-emoji (3.1.0)
       unicode-version (~> 1.0)
     unicode-version (1.2.0)
+    zeitwerk (2.6.1)
 
 PLATFORMS
   x86_64-darwin-20
@@ -20,6 +21,7 @@ DEPENDENCIES
   colorize
   pry
   unicode-emoji
+  zeitwerk
 
 BUNDLED WITH
    2.3.15

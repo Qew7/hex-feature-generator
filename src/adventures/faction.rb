@@ -1,4 +1,4 @@
-class AdventureFaction < AdventurePart
+class Adventures::Faction < AdventurePart
   require_relative "../names/faction_name"
   
   private

@@ -1,12 +1,12 @@
-class AdventureMotivation < AdventurePart
-  require_relative 'adventure_item'
+class Adventures::Motivation < AdventurePart
+  require_relative 'item'
   
   private
   
   def table
     table = []
     1.times { table << "Были скорблены насмешками" }
-    1.times { table << "Хотят получить #{AdventureItem.roll}" }
+    1.times { table << "Хотят получить #{Adventures::Item.roll}" }
     1.times { table << "Получили приказ лидера" }
     1.times { table << "Получили приказ духовного лидера" }
     1.times { table << "Ответили на затаившуюся древнюю обиду" }

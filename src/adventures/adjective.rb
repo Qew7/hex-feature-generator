@@ -1,4 +1,4 @@
-class AdventureAdjective < AdventurePart
+class Adventures::Adjective < AdventurePart
   
   private
   

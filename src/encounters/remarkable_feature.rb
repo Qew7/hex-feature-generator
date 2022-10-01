@@ -1,4 +1,4 @@
-class RemarkableFeatureEncounter < Encounter
+class Encounters::RemarkableFeature < Encounter
   
   private
   

@@ -15,29 +15,29 @@ class HexEncounterGenerator
 
   def self.non_explored_hex_table
     table = []
-    9.times { table << NpcEncounter.roll }
-    10.times { table << AnimalHerdEncounter.roll }
-    20.times { table << WanderingMonsterEncounter.roll }
-    5.times { table << LairEncounter.roll }
-    10.times { table << RemoteStructureEncounter.roll }
-    15.times { table << RuinedStructureEncounter.roll }
-    9.times { table << PastEventEncounter.roll }
-    10.times { table << CurrentEventEncounter.roll }
-    1.times { table << LostItemEncounter.roll }
-    8.times { table << NaturalStructureEncounter.roll }
-    3.times { table << RemarkableFeatureEncounter.roll }
+    9.times { table << Encounters::Npc.roll }
+    10.times { table << Encounters::AnimalHerd.roll }
+    20.times { table << Encounters::WanderingMonster.roll }
+    5.times { table << Encounters::Lair.roll }
+    10.times { table << Encounters::RemoteStructure.roll }
+    15.times { table << Encounters::RuinedStructure.roll }
+    9.times { table << Encounters::PastEvent.roll }
+    10.times { table << Encounters::CurrentEvent.roll }
+    1.times { table << Encounters::LostItem.roll }
+    8.times { table << Encounters::NaturalStructure.roll }
+    3.times { table << Encounters::RemarkableFeature.roll }
     table
   end
 
   def self.explored_hex_table
     table = []
-    15.times { table << NpcEncounter.roll }
-    15.times { table << AnimalHerdEncounter.roll }
-    36.times { table << WanderingMonsterEncounter.roll }
-    15.times { table << PastEventEncounter.roll }
-    15.times { table << CurrentEventEncounter.roll }
-    1.times { table << LostItemEncounter.roll }
-    3.times { table << RemarkableFeatureEncounter.roll }
+    15.times { table << Encounters::Npc.roll }
+    15.times { table << Encounters::AnimalHerd.roll }
+    36.times { table << Encounters::WanderingMonster.roll }
+    15.times { table << Encounters::PastEvent.roll }
+    15.times { table << Encounters::CurrentEvent.roll }
+    1.times { table << Encounters::LostItem.roll }
+    3.times { table << Encounters::RemarkableFeature.roll }
     table
   end
 end

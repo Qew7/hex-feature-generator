@@ -1,4 +1,4 @@
-class WeaponName < Name
+class Names::WeaponName < Name
   def generate(type: nil, material: nil, size: nil, title: nil, effect: nil, special: nil)
     @type = type
     @material = material

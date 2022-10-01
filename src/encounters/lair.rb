@@ -1,4 +1,4 @@
-class LairEncounter < Encounter
+class Encounters::Lair < Encounter
 
   private
 

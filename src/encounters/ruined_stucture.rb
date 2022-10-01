@@ -1,4 +1,4 @@
-class RuinedStructureEncounter < Encounter
+class Encounters::RuinedStructure < Encounter
   
   private
   

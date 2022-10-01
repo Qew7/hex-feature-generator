@@ -1,4 +1,4 @@
-class NaturalStructureEncounter < Encounter
+class Encounters::NaturalStructure < Encounter
   
   private
   

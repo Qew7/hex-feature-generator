@@ -1,4 +1,4 @@
-class AdventureClue < AdventurePart
+class Adventures::Clue < AdventurePart
   
   private
   

@@ -1,4 +1,4 @@
-class AdventurePerson < AdventurePart
+class Adventures::Person < AdventurePart
   
   private
   

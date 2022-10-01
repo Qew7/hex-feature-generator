@@ -1,11 +1,11 @@
-class AdventureItem < AdventurePart
-  require_relative 'adventure_clue'
+class Adventures::Item < AdventurePart
+  require_relative 'clue'
   
   private
   
   def table
     table = []
-    20.times { table << AdventureClue.roll }
+    20.times { table << Adventures::Clue.roll }
     1.times { table << "Труп" }
     1.times { table << "Груз" }
     1.times { table << "Скот" }

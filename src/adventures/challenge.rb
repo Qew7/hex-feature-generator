@@ -1,4 +1,4 @@
-class AdventureChallenge < AdventurePart
+class Adventures::Challenge < AdventurePart
   require 'colorize'
 
   attr_reader :faction
@@ -27,15 +27,15 @@ class AdventureChallenge < AdventurePart
   private
 
   def adjective
-    AdventureAdjective.roll
+    Adventures::Adjective.roll
   end
 
   def who
-    AdventurePerson.roll
+    Adventures::Person.roll
   end
 
   def what
-    AdventureItem.roll
+    Adventures::Item.roll
   end
 
   def verb_with_who_table

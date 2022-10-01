@@ -1,4 +1,4 @@
-class LostItemEncounter < Encounter
+class Encounters::LostItem < Encounter
 
   private
 

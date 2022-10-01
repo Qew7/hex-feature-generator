@@ -1,4 +1,4 @@
-class FactionName < Name
+class Names::FactionName < Name
   def generate
     [
       DiceRoller.roll_from_table(adjectives_table),
