@@ -4,17 +4,17 @@ class Encounters::NaturalStructure < Encounter
   
   def table
     table = []
-    10.times { table << "Cave" }
-    1.times { table << "Dug Mound - Buried Sack containing a Random Magic Item" }
-    2.times { table << "Glowing fungus - worth 50gp to a Herbalist" }
-    3.times { table << "Animal Graveyard - lots of bones from many large animals" }
-    4.times { table << "Animal Nest - 1d4 rare eggs worth 20gp each" }
-    4.times { table << "Large Pond^^" }
-    4.times { table << "Enough fruit to provide 1 days provisions for the whole party" }
-    3.times { table << "A large field of wild flowers" }
-    5.times { table << "A huge ancient tree surrounded by a circle of 12 smaller trees" }
+    10.times { table << "Пещера" }
+    1.times { table << "Рукотворный холм" }
+    2.times { table << "Светащаяся грибница" }
+    3.times { table << "Могила животных" }
+    4.times { table << "Гнездо животных и #{rand(1..5)} яиц животного" }
+    4.times { table << "Большое озеро" }
+    4.times { table << "Растущих фруктов на деревьях хватит на пропитание на день" }
+    3.times { table << "Большое поле диких цветов" }
+    5.times { table << "Большое древнее дерево окруженое кругом из #{rand(6..12)} деревьев поменьше" }
     5.times { table << "Small Lake^^" }
-    4.times { table << "A foul, sulphur-like smell persists in this area" }
+    4.times { table << "Пахнет прожухлым запахом серы" }
     5.times { table << "Large scattered boulders and rocky outcrops" }
     6.times { table << "Spring (drinkable water)" }
     5.times { table << "Hot Spring (50% chance of being drinkable)" }
