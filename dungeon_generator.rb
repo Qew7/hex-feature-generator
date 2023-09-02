@@ -23,62 +23,17 @@ class DungeonGenerator
     new(levels: json, name: json['name'], seed: json['seed'])
   end
 
-  def to_s(level_num)
-    level_data = levels[level_num.to_s]
-    level_data['cells'].each_with_index do |row, row_num|
-      long_room_number = false
-      puts (row.map.with_index do |s, col_num|
-        if s == 16
-          '▓'.colorize(:white).colorize(background: :white)
-        elsif s == 0
-          ' '
-        elsif s == 4
-          ':'.colorize(:white).colorize(background: :light_black)
-        elsif s == 524292 || s == 262148
-          '+'.colorize(:black).colorize(background: :light_black)
-        elsif s == 1048580
-          'S'.colorize(:black).colorize(background: :light_black)
-        elsif s == 4194308
-          '<'.colorize(:black).colorize(background: :light_white)
-        elsif s == 8388612
-          '>'.colorize(:black).colorize(background: :light_white)
-        elsif s.to_s.size == 3
-          '.'
-        elsif s.to_s.size > 7
-          room = level_data['rooms'].find do |r|
-            next if r.nil?
-            r['col'].between?(col_num - 5, col_num) && r['row'].between?(row_num - 3, row_num)
-          end
-          room_number = room['id']
-          if room_number > 9
-            if long_room_number
-              long_room_number = false
-              room_number.to_s.split("").last.colorize(:red).colorize(background: :green)
-            else
-              long_room_number = true
-              room_number.to_s.split("").first.colorize(:red).colorize(background: :green)
-            end
-          else
-            room_number.to_s.colorize(:red).colorize(background: :green)
-          end
-        elsif s == level_data['cell_bit']['trapped']
-          't'
-        elsif s == level_data['cell_bit']['locked']
-          '6'
-        else
-          '.'
-        end
-      end.join)
-    end
-    p
-    puts levels['name']
-    puts levels['description']
-    puts "#{level_num} этаж"
-    puts @seed
-    nil
+  def level(level_number)
+    Dungeons::Level.new(
+      number: level_number,
+      description: '',
+      data: levels[level_number.to_s],
+      dungeon: self
+    )
   end
 
   def room(level_number, room_number)
+    retries = 0
     room = levels[level_number.to_s]['rooms'].find{ |r| next if r.nil?; r['id'] == room_number }
     return room['content'] if room['content']
     room_with_trap = DiceRoller.roll_dice(6) == 1
@@ -88,8 +43,8 @@ class DungeonGenerator
     end
     trap_string = room_with_trap ? 'В комнате находится ловушка, опиши как игроки могли бы ее заметить.' : 'В этой комнате находится препятствие, опиши какое конкретно'
     monster_string = room_with_monsters ? "В комнате находятся #{monster_reaction} существа подходящие под описание подземелья, конкретно что это за существа, как их называют, как они выглядят и что им нужно. При описании учти что чем больше номер этажа тем опаснее существа. Подробно опиши как выглядят существа, как они передвигаются, если они агрессивные то напиши как атакуют." : 'В комнате отсутствуют существа.'
-    equipment_string = [true, false].sample ? "В комнате находится обмундирование или предметы роскоши, опиши какие конкретно, максимум #{rand(1..3)}. Каждое описано настолько подробно что читателю кажется будто этот предмет уже в его руках." : "В комнате отсутствует какое либо обмундирование."
-    description_string = [true, false].sample ? "Описание одной из комнат подземелья, само подземелье можно описать как: #{levels['description'].values.sample}." : "Дай интересное описание комнаты."  
+    equipment_string = ["В комнате находится обмундирование или предметы роскоши, опиши какие конкретно, максимум #{rand(1..3)}. Каждое описано настолько подробно что читателю кажется будто этот предмет уже в его руках.", "В комнате отсутствует какое либо обмундирование."].sample
+    description_string = ["Описание одной из комнат подземелья, само подземелье можно описать как: #{levels['description'].values.sample}.", "Дай интересное описание комнаты."].sample
   begin
     response = gpt_client.send_message(
       "Ты писатель в жанре grim dark low fantasy. \
@@ -98,7 +53,7 @@ class DungeonGenerator
       Опиши комнату в подземелье #{name} на #{level_number} этаже. \
       Описание веди во втором лице, к нескольким персонажам, обращайся на 'вы'. \ 
       Комната в форме #{room['shape']}. \
-      Не повторять название подземелья в ответе. \
+      Не повторять название подземелья в ответе. \d
       Ответ должен быть в формате JSON содержать 7 ключей:
       Первый должен называться description в нем ты описываешь саму комнату, интерьер. #{description_string} \
       Придумай что нибудь интересное что может содержать эта комната. \
@@ -116,6 +71,8 @@ class DungeonGenerator
     result = JSON.parse(response)
     room['content'] = result
   rescue => e
+    retries += 1
+    return if retries == 10
     retry
   end
   end
